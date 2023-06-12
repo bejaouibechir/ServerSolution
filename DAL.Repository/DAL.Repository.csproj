@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Infra.CosmosDB\Infra.CosmosDB.csproj" />
+    <ProjectReference Include="..\Infra.PostGres\Infra.PostGres.csproj" />
+    <ProjectReference Include="..\Infra.SqlServer\Infra.SqlServer.csproj" />
+    <ProjectReference Include="..\Model\Model.csproj" />
+  </ItemGroup>
+
+</Project>
