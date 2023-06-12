@@ -1,5 +1,6 @@
 ﻿namespace Model
 {
+    //Commentaire
     public class Client
     {
         public int Id { get; set; }
