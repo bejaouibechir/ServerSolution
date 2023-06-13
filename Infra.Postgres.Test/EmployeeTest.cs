@@ -32,5 +32,36 @@ namespace Infra.Postgres.Test
                 Assert.Fail();
             }
         }
+
+        [Test]
+        public void UpdateTest()
+        {
+           //Ajouter le test de mise à jour
+        }
+
+        [Test]
+        public void DeleteTest()
+        {
+            //Ajouter le test de supression
+        }
+
+        [Test]
+        public void GetTest()
+        {
+            //Ajouter le test pour avoir un employee
+        }
+
+        [Test]
+        public void ListTest()
+        {
+            //Ajouter le test pour lister les employees
+        }
+
+        [Test]
+        public void FiltreTest()
+        {
+            //Ajouter le test pour filter les employees
+        }
+
     }
 }

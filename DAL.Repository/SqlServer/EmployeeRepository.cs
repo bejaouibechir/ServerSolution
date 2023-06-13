@@ -1,39 +1,30 @@
-﻿using Model;
+﻿using Infra.Postgres;
+using Microsoft.IdentityModel.Tokens;
+using Model;
 
 namespace DAL.Repository.SqlServer
 {
+    //Implémentation 
     public class EmployeeRepository : IRepository<Employee>
     {
-        public void Add(Employee entity)
-        {
-            ;
-            ;
-            ;
-        }
+        Crud _implementation;
+        public EmployeeRepository() => _implementation = new Crud(); //Bodyed expression 
 
-        public void Delete(int id)
-        {
-            ;
-        }
+        public void Add(Employee entity) => _implementation.Add_Employee(entity);
+
+        public void Delete(int id) =>_implementation.Delete_Employee(id);
+        
 
         public List<Employee> FindAll(Predicate<Employee> predicate)
-        {
-             return null;
-        }
+           =>_implementation.Filter_Employee(predicate);
 
         public List<Employee> GetAll()
-        {
-            return null;
-        }
+        => _implementation.List_Employee();
 
         public Employee GetById(int id)
-        {
-            return null;
-        }
+        => _implementation.Get_Employee(id);
 
         public void Update(int id, Employee newentity)
-        {
-           ;
-        }
+        => _implementation.Update_Employee(id, newentity);
     }
 }

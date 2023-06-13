@@ -9,6 +9,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Infra.CosmosDB\Infra.CosmosDB.csproj" />
     <ProjectReference Include="..\Infra.PostGres\Infra.PostGres.csproj" />
+    <ProjectReference Include="..\infra.SqlServer.EF\infra.SqlServer.EF.csproj" />
     <ProjectReference Include="..\Infra.SqlServer\Infra.SqlServer.csproj" />
     <ProjectReference Include="..\Model\Model.csproj" />
   </ItemGroup>

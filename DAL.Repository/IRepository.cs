@@ -1,5 +1,6 @@
 ﻿namespace DAL.Repository
 {
+    //Abstraction
     public interface IRepository<T>
     {
         void Add(T entity);
@@ -9,9 +10,6 @@
 
         T GetById(int id);
         List<T> GetAll();
-
         List<T> FindAll(Predicate<T> predicate);
-
-
     }
 }

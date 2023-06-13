@@ -1,37 +1,28 @@
-﻿using Model;
+﻿using Infra.Postgres;
+using Model;
 
 namespace DAL.Repository.PostGres
 {
     public class EmployeeRepository : IRepository<Employee>
     {
-        public void Add(Employee entity)
-        {
-            throw new NotImplementedException();
-        }
+        Crud _implementation;
+        public EmployeeRepository() => _implementation = new Crud(); //Bodyed expression 
 
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public void Add(Employee entity) => _implementation.Add_Employee(entity);
+
+        public void Delete(int id) => _implementation.Delete_Employee(id);
+
 
         public List<Employee> FindAll(Predicate<Employee> predicate)
-        {
-            throw new NotImplementedException();
-        }
+           => _implementation.Filter_Employee(predicate);
 
         public List<Employee> GetAll()
-        {
-            throw new NotImplementedException();
-        }
+        => _implementation.List_Employee();
 
         public Employee GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        => _implementation.Get_Employee(id);
 
         public void Update(int id, Employee newentity)
-        {
-            throw new NotImplementedException();
-        }
+        => _implementation.Update_Employee(id, newentity);
     }
 }

@@ -1,37 +1,29 @@
-﻿using Model;
+﻿using Infra.Postgres;
+using Model;
 
 namespace DAL.Repository.PostGres
 {
     public class DepartementRepository : IRepository<Departement>
     {
-        public void Add(Departement entity)
-        {
-            throw new NotImplementedException();
-        }
+        Crud _implementation;
+        public DepartementRepository() => _implementation = new Crud(); //Bodyed expression 
 
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public void Add(Departement entity) => _implementation.Add_Departement(entity);
+
+        public void Delete(int id) => _implementation.Delete_Departement(id);
+
 
         public List<Departement> FindAll(Predicate<Departement> predicate)
-        {
-            throw new NotImplementedException();
-        }
+           => _implementation.Filter_Departement(predicate);
 
         public List<Departement> GetAll()
-        {
-            throw new NotImplementedException();
-        }
+        => _implementation.List_Departement();
 
         public Departement GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        => _implementation.Get_Departement(id);
 
         public void Update(int id, Departement newentity)
-        {
-            throw new NotImplementedException();
-        }
+        => _implementation.Update_Departement(id, newentity);
+
     }
 }

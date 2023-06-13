@@ -14,7 +14,7 @@ namespace Infra.Postgres
     public partial class Crud
     {
        
-        public void Add(Departement dep)
+        public void Add_Departement(Departement dep)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace Infra.Postgres
             }
         }
 
-        public void Update(int id, Departement new_dep)
+        public void Update_Departement(int id, Departement new_dep)
         {
             try
             {

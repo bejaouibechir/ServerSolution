@@ -274,7 +274,7 @@ namespace Infra.SqlServer
             }
         }
 
-        public List<Client> Filter(Predicate<Client> filter)
+        public List<Client> Filter_Client(Predicate<Client> filter)
         {
             return List_Client().FindAll(filter);
         }
