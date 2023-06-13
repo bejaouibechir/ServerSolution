@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.Postgres.Test", "Infr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "infra.SqlServer.EF", "infra.SqlServer.EF\infra.SqlServer.EF.csproj", "{C591CF47-ACA5-4E90-9772-2568E6FC23AD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entreprise.AsmxService", "Entreprise.AsmxService\Entreprise.AsmxService.csproj", "{79081D8B-F85C-49CD-8430-1C336BD7D7A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{C591CF47-ACA5-4E90-9772-2568E6FC23AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C591CF47-ACA5-4E90-9772-2568E6FC23AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C591CF47-ACA5-4E90-9772-2568E6FC23AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79081D8B-F85C-49CD-8430-1C336BD7D7A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79081D8B-F85C-49CD-8430-1C336BD7D7A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79081D8B-F85C-49CD-8430-1C336BD7D7A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79081D8B-F85C-49CD-8430-1C336BD7D7A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
