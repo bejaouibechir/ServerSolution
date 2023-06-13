@@ -3,13 +3,13 @@
 //#define prod
 #define dev
 
-using Microsoft.Data.SqlClient;
 using Model;
+using Npgsql;
 using System.Data;
 using System.Diagnostics;
-using System.Runtime.Intrinsics.Arm;
 
-namespace Infra.SqlServer
+
+namespace Infra.Postgres
 {
     public partial class Crud
     {
@@ -21,11 +21,11 @@ namespace Infra.SqlServer
 
                 #region paramètres 
 
-                SqlParameter idparam = new SqlParameter("@id", SqlDbType.Int);
+                NpgsqlParameter idparam = new NpgsqlParameter("@id", SqlDbType.Int);
                 idparam.Direction = ParameterDirection.Input;
                 idparam.Value = dep.Id;
 
-                SqlParameter labelparam = new SqlParameter("@label", SqlDbType.NVarChar);
+                NpgsqlParameter labelparam = new NpgsqlParameter("@label", SqlDbType.NVarChar);
                 labelparam.Direction = ParameterDirection.Input;
                 labelparam.Value = dep.Label;
 
@@ -34,20 +34,20 @@ namespace Infra.SqlServer
 #if query
                 _query = "INSERT INTO [dbo].[Departement]([Id],[Label]," +
                     $" [CreationDate]) VALUES(@id,@name,@salary,@daysoff,'{new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day)}')";
-                _command = new SqlCommand(_query, _connection);
+                _command = new NpgsqlCommand(_query, _connection);
                 _command.CommandType = CommandType.Text; //Pour représenter une requête 
-                 _command.Parameters.AddRange(new SqlParameter[] {idparam,labelparam});
+                 _command.Parameters.AddRange(new NpgsqlParameter[] {idparam,labelparam});
 #endif
 #if proc
                 _query = "dbo.sp_adddepartement";
-                _command = new SqlCommand(_query, _connection);
+                _command = new NpgsqlCommand(_query, _connection);
                 _command.CommandType = CommandType.StoredProcedure; //Pour représenter une requête 
-                _command.Parameters.AddRange(new SqlParameter[] {idparam,labelparam});
+                _command.Parameters.AddRange(new NpgsqlParameter[] {idparam,labelparam});
 #endif     
                 _connection.Open();
                 _command.ExecuteNonQuery();
             }
-            catch (SqlException ex)
+            catch (NpgsqlException ex)
             {
 
 #if dev
@@ -71,33 +71,33 @@ namespace Infra.SqlServer
 
                 #region paramètres 
 
-                SqlParameter idparam = new SqlParameter("@id", SqlDbType.Int);
+                NpgsqlParameter idparam = new NpgsqlParameter("@id", SqlDbType.Int);
                 idparam.Direction = ParameterDirection.Input;
                 idparam.Value = new_dep.Id;
 
-                SqlParameter labelparam = new SqlParameter("@label", SqlDbType.NVarChar);
+                NpgsqlParameter labelparam = new NpgsqlParameter("@label", SqlDbType.NVarChar);
                 labelparam.Direction = ParameterDirection.Input;
                 labelparam.Value = new_dep.Label;
 
                 #endregion
 
 #if query
-                _query = "UPDATE [dbo].[Departement] set [Label] = @label" +
+                _query = "UPDATE [Departement] set [Label] = @label" +
                         $" where [Id] =@id )";
-                _command = new SqlCommand(_query, _connection);
+                _command = new NpgsqlCommand(_query, _connection);
                 _command.CommandType = CommandType.Text; //Pour représenter une requête 
-                 _command.Parameters.AddRange(new SqlParameter[] {idparam,label});
+                 _command.Parameters.AddRange(new NpgsqlParameter[] {idparam,label});
 #endif
 #if proc
-                _query = "dbo.sp_updatedepartement";
-                _command = new SqlCommand(_query, _connection);
+                _query = "sp_updatedepartement";
+                _command = new NpgsqlCommand(_query, _connection);
                 _command.CommandType = CommandType.StoredProcedure; //Pour représenter une requête 
-                _command.Parameters.AddRange(new SqlParameter[] {idparam,labelparam});
+                _command.Parameters.AddRange(new NpgsqlParameter[] {idparam,labelparam});
 #endif     
                 _connection.Open();
                 _command.ExecuteNonQuery();
             }
-            catch (SqlException ex)
+            catch (NpgsqlException ex)
             {
 
 #if dev
@@ -118,13 +118,13 @@ namespace Infra.SqlServer
         {
             try
             {
-                SqlParameter idparam = new SqlParameter("@id", SqlDbType.Int);
+                NpgsqlParameter idparam = new NpgsqlParameter("@id", SqlDbType.Int);
                 idparam.Direction = ParameterDirection.Input;
                 idparam.Value = id;
 
 #if query
-                _query = "DELETE dbo.Departement where id = @id";
-                _command = new SqlCommand(_query, _connection);
+                _query = "DELETE Departement where id = @id";
+                _command = new NpgsqlCommand(_query, _connection);
                 _command.CommandType = CommandType.Text; //Pour représenter une requête 
                  _command.Parameters.Add(idparam);
                 _connection.Open();
@@ -132,15 +132,15 @@ namespace Infra.SqlServer
 
 #endif
 #if proc
-                _query = "dbo.sp_deleteemployee";
-                _command = new SqlCommand(_query, _connection);
+                _query = "sp_deleteemployee";
+                _command = new NpgsqlCommand(_query, _connection);
                 _command.CommandType = CommandType.StoredProcedure; //Pour représenter une requête 
                 _command.Parameters.Add(idparam);
                 _connection.Open();
                 _command.ExecuteNonQuery();
 #endif
             }
-            catch (SqlException ex)
+            catch (NpgsqlException ex)
             {
 #if dev
                 Debug.WriteLine(ex.Message);
@@ -156,12 +156,12 @@ namespace Infra.SqlServer
 
             try
             {
-                SqlParameter idparam = new SqlParameter("@id", SqlDbType.Int);
+                NpgsqlParameter idparam = new NpgsqlParameter("@id", SqlDbType.Int);
                 idparam.Direction = ParameterDirection.Input;
                 idparam.Value = id;
 
                 _query = "sp_getdepartement";
-                _command = new SqlCommand(_query, _connection);
+                _command = new NpgsqlCommand(_query, _connection);
                 _command.CommandType = CommandType.StoredProcedure; //Pour représenter une requête 
                 _command.Parameters.Add(idparam);
                 _connection.Open();
@@ -176,7 +176,7 @@ namespace Infra.SqlServer
                 };
                 return employee;
             }
-            catch (SqlException ex)
+            catch (NpgsqlException ex)
             {
 #if dev
                 Debug.WriteLine(ex.Message);
@@ -199,8 +199,8 @@ namespace Infra.SqlServer
             try
             {
 
-                _query = "dbo.sp_getdepartementlist";
-                _command = new SqlCommand(_query, _connection);
+                _query = "sp_getdepartementlist";
+                _command = new NpgsqlCommand(_query, _connection);
                 _command.CommandType = CommandType.StoredProcedure; //Pour représenter une requête 
                 _connection.Open();
                 _reader = _command.ExecuteReader();
@@ -217,7 +217,7 @@ namespace Infra.SqlServer
                return departementlist;
 
             }
-            catch (SqlException ex)
+            catch (NpgsqlException ex)
             {
 #if dev
                 Debug.WriteLine(ex.Message);
