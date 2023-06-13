@@ -35,5 +35,38 @@ namespace Infra.SqlServer.Test
             }
         }
 
+
+        [Test]
+        public void DeleteTest()
+        {
+           int id = 2;
+           _implementation.Delete_Employee(id);
+           Assert.Pass();
+        }
+
+
+        [Test]
+        public void GetTest()
+        {
+            int id = 1;
+            Employee employee  = _implementation.Get_Employee(id);
+            Assert.Pass();
+        }
+
+
+        [Test]
+        public void ListTest()
+        {
+            var  employees = _implementation.List_Employee();
+            Assert.Pass();
+        }
+
+
+        [Test]
+        public void FindAllTest()
+        {
+            var employees = _implementation.Filter_Employee(emp=>emp.Salary<5000 | emp.DaysOff==1);
+            Assert.Pass();
+        }
     }
 }
