@@ -38,11 +38,11 @@ namespace Infra.Postgres
                 idparam.Direction = ParameterDirection.Input;
                 idparam.Value = emp.Id;
 
-                NpgsqlParameter nameparam = new NpgsqlParameter("@name", SqlDbType.NVarChar);
+                NpgsqlParameter nameparam = new NpgsqlParameter("@name", SqlDbType.Text);
                 nameparam.Direction = ParameterDirection.Input;
                 nameparam.Value = emp.Name;
 
-                NpgsqlParameter salaryparam = new NpgsqlParameter("@salary", SqlDbType.Money);
+                NpgsqlParameter salaryparam = new NpgsqlParameter("@salary", SqlDbType.Decimal);
                 salaryparam.Direction = ParameterDirection.Input;
                 salaryparam.Value = emp.Salary;
 
