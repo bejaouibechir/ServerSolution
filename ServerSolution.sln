@@ -3,29 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{DF2E6FF4-2344-4A51-AD54-15014B4D4FEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{DF2E6FF4-2344-4A51-AD54-15014B4D4FEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.SqlServer", "Infra.SqlServer\Infra.SqlServer.csproj", "{CCD10432-936F-449F-AEDA-35B2CBE8E48B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.SqlServer", "Infra.SqlServer\Infra.SqlServer.csproj", "{CCD10432-936F-449F-AEDA-35B2CBE8E48B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.CosmosDB", "Infra.CosmosDB\Infra.CosmosDB.csproj", "{BAFAE524-C4B7-497C-B722-EFDB24959160}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.CosmosDB", "Infra.CosmosDB\Infra.CosmosDB.csproj", "{BAFAE524-C4B7-497C-B722-EFDB24959160}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.SqlServer.Test", "Infra.SqlServer.Test\Infra.SqlServer.Test.csproj", "{A9D4E82E-22C1-46AF-B6AD-A32B280AD8CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.SqlServer.Test", "Infra.SqlServer.Test\Infra.SqlServer.Test.csproj", "{A9D4E82E-22C1-46AF-B6AD-A32B280AD8CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.Cosmos.Test", "Infra.Cosmos.Test\Infra.Cosmos.Test.csproj", "{89A8CAF7-2C0C-4790-8AD1-7E6004945712}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.Cosmos.Test", "Infra.Cosmos.Test\Infra.Cosmos.Test.csproj", "{89A8CAF7-2C0C-4790-8AD1-7E6004945712}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL.Repository", "DAL.Repository\DAL.Repository.csproj", "{D624E19D-E7E9-4D08-BF00-C95451B36D61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL.Repository", "DAL.Repository\DAL.Repository.csproj", "{D624E19D-E7E9-4D08-BF00-C95451B36D61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.PostGres", "Infra.PostGres\Infra.PostGres.csproj", "{63794C48-2101-41D2-829F-8AAEBFC220CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.PostGres", "Infra.PostGres\Infra.PostGres.csproj", "{63794C48-2101-41D2-829F-8AAEBFC220CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{B169B8AD-D4EA-4E15-A9DC-FEA8370696B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{B169B8AD-D4EA-4E15-A9DC-FEA8370696B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL.Repository.Test", "DAL.Repository.Test\DAL.Repository.Test.csproj", "{AEBD89DA-79F1-4167-A9C3-BA95CF55E0F2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL.Repository.Test", "DAL.Repository.Test\DAL.Repository.Test.csproj", "{AEBD89DA-79F1-4167-A9C3-BA95CF55E0F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra.Postgres.Test", "Infra.Postgres.Test\Infra.Postgres.Test.csproj", "{FE45A181-F871-4CC4-88CC-411998D89F13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra.Postgres.Test", "Infra.Postgres.Test\Infra.Postgres.Test.csproj", "{FE45A181-F871-4CC4-88CC-411998D89F13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "infra.SqlServer.EF", "infra.SqlServer.EF\infra.SqlServer.EF.csproj", "{C591CF47-ACA5-4E90-9772-2568E6FC23AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "infra.SqlServer.EF", "infra.SqlServer.EF\infra.SqlServer.EF.csproj", "{C591CF47-ACA5-4E90-9772-2568E6FC23AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entreprise.AsmxService", "Entreprise.AsmxService\Entreprise.AsmxService.csproj", "{79081D8B-F85C-49CD-8430-1C336BD7D7A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entreprise.AsmxService", "Entreprise.AsmxService\Entreprise.AsmxService.csproj", "{E5712F91-CB92-4D90-87A5-E771A05C02E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entreprise.WCFService", "Entreprise.WCFService\Entreprise.WCFService.csproj", "{88158295-FA2E-47AF-A048-7E927D70B858}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,10 +79,14 @@ Global
 		{C591CF47-ACA5-4E90-9772-2568E6FC23AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C591CF47-ACA5-4E90-9772-2568E6FC23AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C591CF47-ACA5-4E90-9772-2568E6FC23AD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{79081D8B-F85C-49CD-8430-1C336BD7D7A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{79081D8B-F85C-49CD-8430-1C336BD7D7A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{79081D8B-F85C-49CD-8430-1C336BD7D7A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{79081D8B-F85C-49CD-8430-1C336BD7D7A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5712F91-CB92-4D90-87A5-E771A05C02E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5712F91-CB92-4D90-87A5-E771A05C02E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5712F91-CB92-4D90-87A5-E771A05C02E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5712F91-CB92-4D90-87A5-E771A05C02E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88158295-FA2E-47AF-A048-7E927D70B858}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88158295-FA2E-47AF-A048-7E927D70B858}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88158295-FA2E-47AF-A048-7E927D70B858}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88158295-FA2E-47AF-A048-7E927D70B858}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

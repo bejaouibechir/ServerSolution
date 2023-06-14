@@ -1,6 +1,6 @@
-﻿namespace Model
+﻿namespace Model.Version1
 {
-    public class Employee
+    public class Employee : IEmployee
     {
         public Employee()
         {
@@ -11,21 +11,21 @@
 
         public string Name { get; set; }
 
-        public decimal Salary { get; set; } 
+        public decimal Salary { get; set; }
 
-        public int  DaysOff { get; set; }
-   
+        public int DaysOff { get; set; }
+
         public DateTime CreationDate { get; set; } = DateTime.Now;
 
         //Clé étrangère 
 
-        public int  DepartementId { get; set;}
+        public int DepartementId { get; set; }
 
         //Propriété de naviguation 
-        public Departement Departement { get; set; }  
-        
+        public Departement Departement { get; set; }
 
-        public List<Client> Clients { get; set;}
+
+        public List<Client> Clients { get; set; }
 
     }
 }

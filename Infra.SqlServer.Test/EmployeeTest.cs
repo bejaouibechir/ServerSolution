@@ -1,5 +1,5 @@
 using Infra.SqlServer;
-using Model;
+using Model.Version1;
 
 namespace Infra.SqlServer.Test
 {

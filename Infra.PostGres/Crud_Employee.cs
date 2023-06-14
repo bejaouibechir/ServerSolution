@@ -4,10 +4,10 @@
 //#define query
 #define proc
 
-using Model;
 using System.Data;
 using System.Diagnostics;
 using Npgsql;
+using Model.Version1;
 
 namespace Infra.Postgres
 {

@@ -1,5 +1,5 @@
 ﻿using Infra.Postgres;
-using Model;
+using Model.Version1;
 
 namespace DAL.Repository.PostGres
 {

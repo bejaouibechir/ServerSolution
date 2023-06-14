@@ -1,4 +1,4 @@
-using Model;
+using Model.Version1;
 
 namespace Infra.Postgres.Test
 {

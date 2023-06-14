@@ -6,7 +6,7 @@
 
 using Microsoft.Data.SqlClient;
 using Microsoft.IdentityModel.Abstractions;
-using Model;
+using Model.Version1;
 using System.Data;
 using System.Diagnostics;
 

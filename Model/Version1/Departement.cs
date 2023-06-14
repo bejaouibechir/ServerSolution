@@ -1,6 +1,6 @@
-﻿namespace Model
+﻿namespace Model.Version1
 {
-    public class Departement
+    public class Departement : IDepartement
     {
         public Departement()
         {
@@ -12,6 +12,6 @@
         public string Label { get; set; }
         public DateTime CreationDate { get; set; } = DateTime.Now;
         public List<Employee> Employees { get; set; }
-    
+
     }
 }

@@ -5,9 +5,11 @@
 
 using Microsoft.Data.SqlClient;
 using Model;
+using Model.Abstraction;
+using Model.Version1;
 using System.Data;
 using System.Diagnostics;
-using System.Runtime.Intrinsics.Arm;
+
 
 namespace Infra.SqlServer
 {
@@ -152,7 +154,7 @@ namespace Infra.SqlServer
             }
         }
 
-        public Departement Get_Departement(int id) {
+        public IDepartement Get_Departement(int id) {
 
             try
             {
@@ -193,7 +195,7 @@ namespace Infra.SqlServer
 
         }
 
-        public List<Departement> List_Departement() {
+        public List<IDepartement> List_Departement() {
             List<Departement> departementlist = new List<Departement>();
             
             try
@@ -235,7 +237,7 @@ namespace Infra.SqlServer
         }
 
 
-        public List<Departement> Filter_Departement(Predicate<Departement> filter)
+        public List<IDepartement> Filter_Departement(Predicate<IDepartement> filter)
         {
             return List_Departement().FindAll(filter);
         }

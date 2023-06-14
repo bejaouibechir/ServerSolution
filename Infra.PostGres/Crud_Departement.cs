@@ -3,7 +3,7 @@
 //#define prod
 #define dev
 
-using Model;
+using Model.Version1;
 using Npgsql;
 using System.Data;
 using System.Diagnostics;

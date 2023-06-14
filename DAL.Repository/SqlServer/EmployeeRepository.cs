@@ -1,6 +1,6 @@
 ﻿using Infra.Postgres;
 using Microsoft.IdentityModel.Tokens;
-using Model;
+using Model.Version1;
 
 namespace DAL.Repository.SqlServer
 {

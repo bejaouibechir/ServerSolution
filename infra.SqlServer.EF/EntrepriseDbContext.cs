@@ -21,6 +21,9 @@ public partial class EntrepriseDbContext : DbContext
 
     public virtual DbSet<Employee> Employees { get; set; }
 
+    //L'entité nouvellement ajoutée
+    public virtual DbSet<Invoice> Invoices { get; set; }
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseSqlServer("Data Source=PC2023\\PC2023;TrustServerCertificate=true;Initial Catalog=EntrepriseDB;Integrated Security=True");
 
@@ -28,9 +31,9 @@ public partial class EntrepriseDbContext : DbContext
     {
         modelBuilder.Entity<Client>(entity =>
         {
-            entity
-                .HasNoKey()
-                .ToTable("Client");
+
+            entity.HasKey(c => c.Id);
+             entity.ToTable("Client");
 
             entity.Property(e => e.CreationDate).HasColumnType("date");
             entity.Property(e => e.EmployeeId).HasColumnName("EmployeeID");
@@ -42,6 +45,16 @@ public partial class EntrepriseDbContext : DbContext
                 .OnDelete(DeleteBehavior.SetNull)
                 .HasConstraintName("FK_Client_Employee");
         });
+
+        modelBuilder.Entity<Invoice>(entity =>
+        {
+            entity.HasKey(i => i.Id);
+            entity.ToTable("Invoice");
+            entity.Property(i=>i.Id).ValueGeneratedNever();
+            entity.Property(i=>i.CreationDate).HasColumnType("date");
+            entity.Property(i=>i.Label).HasMaxLength(50);
+        });
+
 
         modelBuilder.Entity<Departement>(entity =>
         {

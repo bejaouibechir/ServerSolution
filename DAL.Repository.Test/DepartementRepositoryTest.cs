@@ -1,13 +1,14 @@
-using Model;
 using DAL.Repository;
 using DAL.Repository.SqlServer;
 using DAL.Repository.PostGres;
+using Model.Version1;
+using Model.Abstraction;
 
 namespace DAL.Repository.Test
 {
     public class DeparetmementRepositoryTest
     {
-        IRepository<Departement> _departementRepository;
+        IRepository<IDepartement> _departementRepository;
 
         [SetUp]
         public void Setup()
@@ -18,9 +19,15 @@ namespace DAL.Repository.Test
             }
             else
             {
-               _departementRepository = new PostGres.DepartementRepository();
+                //Travail à faire: adapter le DDD pour qu'il implémente DAO voir comme exemple 
+                //les modfications faites au niveau de DepartementRepository et CRUD 
+                //On ajouté deux versions pour chacune des methodes crud exemple
+                //Get_Departement qui gère l'entité Departement et Get_Departement2 qui gère Departement2 
+                
+
+                //_departementRepository = new PostGres.DepartementRepository();
             }
-            
+
         }
         
 

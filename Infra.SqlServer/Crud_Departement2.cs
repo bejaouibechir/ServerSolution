@@ -1,19 +1,22 @@
-﻿#define dev
-#define prod
-#define query 
-#define proc
+﻿#define proc
+//#define query
+//#define prod
+#define dev
 
 using Microsoft.Data.SqlClient;
+using Model;
+using Model.Abstraction;
 using Model.Version1;
 using System.Data;
-
 using System.Diagnostics;
+using System.Runtime.Intrinsics.Arm;
 
 namespace Infra.SqlServer
 {
     public partial class Crud
     {
-        public void Add_Client(Client cli)
+       
+        public void Add_Departement2(Departement2 dep)
         {
             try
             {
@@ -22,45 +25,29 @@ namespace Infra.SqlServer
 
                 SqlParameter idparam = new SqlParameter("@id", SqlDbType.Int);
                 idparam.Direction = ParameterDirection.Input;
-                idparam.Value = cli.Id;
+                idparam.Value = dep.Id;
 
-                SqlParameter nameparam = new SqlParameter("@name", SqlDbType.NVarChar);
-                nameparam.Direction = ParameterDirection.Input;
-                nameparam.Value = cli.Name;
-
-                SqlParameter historyparam = new SqlParameter("@history", SqlDbType.Xml);
-                historyparam.Direction = ParameterDirection.Input;
-                historyparam.Value = cli.History;
-
-                SqlParameter employeeparam = new SqlParameter("@employeeid", SqlDbType.Int);
-                employeeparam.Direction = ParameterDirection.Input;
-                employeeparam.Value = cli.EmployeeId;
-
+                SqlParameter labelparam = new SqlParameter("@label", SqlDbType.NVarChar);
+                labelparam.Direction = ParameterDirection.Input;
+                labelparam.Value = dep.Label;
 
                 #endregion
 
 #if query
-                _query = "INSERT INTO [dbo].[Client]([Id],[Name],[History]," +
-                    $" [CreationDate],[EmployeeID]) VALUES(@id,@name,@history," +
-                    $"'{new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)}',@employeeid)";
+                _query = "INSERT INTO [dbo].[Departement2]([Id],[Label]," +
+                    $" [CreationDate]) VALUES(@id,@name,@salary,@daysoff,'{new DateTime(DateTime.Now.Year,DateTime.Now.Month,DateTime.Now.Day)}')";
                 _command = new SqlCommand(_query, _connection);
                 _command.CommandType = CommandType.Text; //Pour représenter une requête 
-                _command.Parameters.AddRange(new SqlParameter[] {idparam,nameparam,historyparam
-                    ,employeeparam});
-                _connection.Open();
-                _command.ExecuteNonQuery();
-
+                 _command.Parameters.AddRange(new SqlParameter[] {idparam,labelparam});
 #endif
 #if proc
-                _query = "dbo.sp_addclient";
+                _query = "dbo.sp_adddepartement";
                 _command = new SqlCommand(_query, _connection);
                 _command.CommandType = CommandType.StoredProcedure; //Pour représenter une requête 
-                _command.Parameters.AddRange(new SqlParameter[] {idparam,nameparam,historyparam
-                    ,employeeparam});
+                _command.Parameters.AddRange(new SqlParameter[] {idparam,labelparam});
+#endif     
                 _connection.Open();
                 _command.ExecuteNonQuery();
-#endif
-
             }
             catch (SqlException ex)
             {
@@ -79,7 +66,7 @@ namespace Infra.SqlServer
             }
         }
 
-        public void Update_Client(int id, Client new_cli)
+        public void Update_Departement2(int id, Departement2 new_dep)
         {
             try
             {
@@ -88,45 +75,29 @@ namespace Infra.SqlServer
 
                 SqlParameter idparam = new SqlParameter("@id", SqlDbType.Int);
                 idparam.Direction = ParameterDirection.Input;
-                idparam.Value = new_cli.Id;
+                idparam.Value = new_dep.Id;
 
-                SqlParameter nameparam = new SqlParameter("@name", SqlDbType.NVarChar);
-                nameparam.Direction = ParameterDirection.Input;
-                nameparam.Value = new_cli.Name;
-
-                SqlParameter historyparam = new SqlParameter("@history", SqlDbType.Xml);
-                historyparam.Direction = ParameterDirection.Input;
-                historyparam.Value = new_cli.History;
-
-                SqlParameter employeeparam = new SqlParameter("@employeeid", SqlDbType.Int);
-                employeeparam.Direction = ParameterDirection.Input;
-                employeeparam.Value = new_cli.EmployeeId;
-
+                SqlParameter labelparam = new SqlParameter("@label", SqlDbType.NVarChar);
+                labelparam.Direction = ParameterDirection.Input;
+                labelparam.Value = new_dep.Label;
 
                 #endregion
 
 #if query
-                _query = "UPDATE [dbo].[Client] set [Name]=@name,[History]=@history," +
-                    $" [EmployeeID]=@employeeid where Id=@id" +
-                    $"'{new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day)}',@employeeid)";
+                _query = "UPDATE [dbo].[Departement2] set [Label] = @label" +
+                        $" where [Id] =@id )";
                 _command = new SqlCommand(_query, _connection);
                 _command.CommandType = CommandType.Text; //Pour représenter une requête 
-                _command.Parameters.AddRange(new SqlParameter[] {idparam,nameparam,historyparam
-                    ,employeeparam});
-                _connection.Open();
-                _command.ExecuteNonQuery();
-
+                 _command.Parameters.AddRange(new SqlParameter[] {idparam,label});
 #endif
 #if proc
-                _query = "dbo.sp_updateclient";
+                _query = "dbo.sp_updatedepartement";
                 _command = new SqlCommand(_query, _connection);
                 _command.CommandType = CommandType.StoredProcedure; //Pour représenter une requête 
-                _command.Parameters.AddRange(new SqlParameter[] {idparam,nameparam,historyparam
-                    ,employeeparam});
+                _command.Parameters.AddRange(new SqlParameter[] {idparam,labelparam});
+#endif     
                 _connection.Open();
                 _command.ExecuteNonQuery();
-#endif
-
             }
             catch (SqlException ex)
             {
@@ -143,10 +114,9 @@ namespace Infra.SqlServer
             {
                 _connection.Close();
             }
-
         }
 
-        public void Delete_Client(int id)
+        public void Delete_Departement2(int id)
         {
             try
             {
@@ -155,16 +125,16 @@ namespace Infra.SqlServer
                 idparam.Value = id;
 
 #if query
-                _query = "DELETE dbo.Client where id = @id";
+                _query = "DELETE dbo.Departement2 where id = @id";
                 _command = new SqlCommand(_query, _connection);
                 _command.CommandType = CommandType.Text; //Pour représenter une requête 
-                _command.Parameters.AddRange(new SqlParameter[] {idparam});
+                 _command.Parameters.Add(idparam);
                 _connection.Open();
                 _command.ExecuteNonQuery();
 
 #endif
 #if proc
-                _query = "sp_deleteclient";
+                _query = "dbo.sp_deleteemployee";
                 _command = new SqlCommand(_query, _connection);
                 _command.CommandType = CommandType.StoredProcedure; //Pour représenter une requête 
                 _command.Parameters.Add(idparam);
@@ -184,7 +154,7 @@ namespace Infra.SqlServer
             }
         }
 
-        public Client Get_Client(int id) {
+        public Departement2 Get_Departement2(int id) {
 
             try
             {
@@ -192,7 +162,7 @@ namespace Infra.SqlServer
                 idparam.Direction = ParameterDirection.Input;
                 idparam.Value = id;
 
-                _query = "sp_getclient";
+                _query = "sp_getdepartement";
                 _command = new SqlCommand(_query, _connection);
                 _command.CommandType = CommandType.StoredProcedure; //Pour représenter une requête 
                 _command.Parameters.Add(idparam);
@@ -200,17 +170,11 @@ namespace Infra.SqlServer
                 _reader = _command.ExecuteReader();
                 _reader.Read();
 
-                int empid;
-                int.TryParse(_reader[5].ToString(), out empid);
-
 #pragma warning disable 8604, 8601
-                Client employee = new Client
+                Departement2 employee = new Departement2
                 {
                     Id = int.Parse(_reader["Id"].ToString()),
-                    Name = _reader[1].ToString(),
-                    History =_reader[2].ToString(),
-                    CreationDate = DateTime.Parse(_reader[4].ToString()),
-                    EmployeeId = empid
+                    Label = _reader[1].ToString(), 
                 };
                 return employee;
             }
@@ -228,35 +192,32 @@ namespace Infra.SqlServer
             {
                 _connection.Close();
             }
+
         }
 
-        public List<Client> List_Client() {
-            List<Client> clientlist = new List<Client>();
+        public List<IDepartement> List_Departement2() {
+            List<Departement2> departementlist = new List<Departement2>();
+            
             try
             {
-                _query = "sp_getclient";
+
+                _query = "dbo.sp_getdepartementlist";
                 _command = new SqlCommand(_query, _connection);
-                _command.CommandType = CommandType.StoredProcedure; 
+                _command.CommandType = CommandType.StoredProcedure; //Pour représenter une requête 
                 _connection.Open();
                 _reader = _command.ExecuteReader();
                 while(_reader.Read())
                 {
-                 int empid;
-                                int.TryParse(_reader[5].ToString(), out empid);
-
-                #pragma warning disable 8604, 8601
-                                Client client = new Client
-                                {
-                                    Id = int.Parse(_reader["Id"].ToString()),
-                                    Name = _reader[1].ToString(),
-                                    History = _reader[2].ToString(),
-                                    CreationDate = DateTime.Parse(_reader[4].ToString()),
-                                    EmployeeId = empid
-                                };
-                        clientlist.Add(client);
+                    #pragma warning disable 8604, 8601
+                    Departement2 departement = new Departement2
+                    {
+                        Id = int.Parse(_reader["Id"].ToString()),
+                        Label = _reader[1].ToString(),
+                    };
+                    departementlist.Add(departement);  
                 }
-                return clientlist;
-               
+               return departementlist;
+
             }
             catch (SqlException ex)
             {
@@ -272,11 +233,13 @@ namespace Infra.SqlServer
             {
                 _connection.Close();
             }
+
         }
 
-        public List<Client> Filter_Client(Predicate<Client> filter)
+
+        public List<IDepartement> Filter_Departement2(Predicate<IDepartement> filter)
         {
-            return List_Client().FindAll(filter);
+            return List_Departement2().FindAll(filter);
         }
     }
 }

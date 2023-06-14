@@ -3,7 +3,7 @@
 #define query 
 #define proc
 
-using Model;
+using Model.Version1;
 using Npgsql;
 using System.Data;
 
